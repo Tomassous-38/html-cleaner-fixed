@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to View Page Source</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2563eb;
+      border-bottom: 2px solid #dbeafe;
+      padding-bottom: 10px;
+    }
+    .browser {
+      margin-bottom: 30px;
+      background: #f9fafb;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    h2 {
+      color: #4f46e5;
+      margin-top: 0;
+    }
+    ol {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+    .note {
+      background-color: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 10px 15px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>How to View Page Source to Check for Server-Side Rendering</h1>
+  
+  <p>To verify if a page is server-side rendered, you need to view the raw HTML source that was sent from the server. This is different from inspecting the DOM, which shows the current state after JavaScript has run.</p>
+  
+  <div class="note">
+    <strong>Important:</strong> "View Page Source" shows the initial HTML from the server, while "Inspect Element" shows the current DOM after JavaScript modifications.
+  </div>
+  
+  <div class="browser">
+    <h2>Chrome</h2>
+    <ol>
+      <li>Right-click anywhere on the page (not on an image or link)</li>
+      <li>Select "View Page Source" from the context menu</li>
+      <li>A new tab will open showing the raw HTML</li>
+      <li>Search for content that should be server-rendered (like the timestamp in our test component)</li>
+    </ol>
+    <p>Keyboard shortcut: <kbd>Ctrl+U</kbd> (Windows/Linux) or <kbd>⌘+Option+U</kbd> (Mac)</p>
+  </div>
+  
+  <div class="browser">
+    <h2>Firefox</h2>
+    <ol>
+      <li>Right-click anywhere on the page</li>
+      <li>Select "View Page Source"</li>
+      <li>A new window will open with the raw HTML</li>
+    </ol>
+    <p>Keyboard shortcut: <kbd>Ctrl+U</kbd> (Windows/Linux) or <kbd>⌘+U</kbd> (Mac)</p>
+  </div>
+  
+  <div class="browser">
+    <h2>Safari</h2>
+    <ol>
+      <li>First, enable the Develop menu: Safari → Preferences → Advanced → check "Show Develop menu in menu bar"</li>
+      <li>Then go to Develop → Show Page Source</li>
+    </ol>
+    <p>Keyboard shortcut: <kbd>Option+⌘+U</kbd></p>
+  </div>
+  
+  <div class="browser">
+    <h2>Edge</h2>
+    <ol>
+      <li>Right-click on the page</li>
+      <li>Select "View Source"</li>
+    </ol>
+    <p>Keyboard shortcut: <kbd>Ctrl+U</kbd></p>
+  </div>
+  
+  <h2>What to Look For</h2>
+  <p>In the page source, look for:</p>
+  <ul>
+    <li>The server timestamp from our test component</li>
+    <li>The text "Client hydrated: No" (which will be replaced with "Yes" after JavaScript runs)</li>
+    <li>All the static content that should be pre-rendered</li>
+  </ul>
+  
+  <div class="note">
+    <p>If you see these elements in the source, it confirms the page was rendered on the server before being sent to the browser.</p>
+  </div>
+  
+  <p>Remember that for a Netlify static site, "server-rendering" actually means the HTML was pre-generated at build time, not generated on-demand for each request.</p>
+</body>
+</html>
