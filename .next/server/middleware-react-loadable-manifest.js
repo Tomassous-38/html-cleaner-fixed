@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST='{"components/Hero.tsx -> ./HtmlCleaner":{"id":7990,"files":["static/chunks/fc83e031.c8e3869784f2c1ea.js","static/chunks/520c8229.ea6c410779ac8b75.js","static/chunks/39.022de660f85f9325.js","static/chunks/990.6e62863e5284e63a.js"]}}';
